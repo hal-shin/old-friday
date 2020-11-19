@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Box, Button, Heading, Text } from "@chakra-ui/core";
+const electron = window.require("electron");
+const { exec } = window.require("child_process");
 
 function App() {
+  console.log("Electron:", electron);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <Box>
+        <Heading>Friday</Heading>
+        <Text>Welcome, Hal! How can I help?</Text>
+        <Button
+          variantColor="green"
+          onClick={
+            () =>
+              exec("jupyter notebook", () => {
+                console.log("Done");
+              })
+            // electron.shell.openPath(
+            //   "C:\\Users\\haeum\\Desktop\\Work\\ERBP-Frontend"
+            // )
+          }
         >
-          Learn React
-        </a>
-      </header>
+          Click me
+        </Button>
+      </Box>
     </div>
   );
 }
