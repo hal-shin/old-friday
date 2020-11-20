@@ -5,6 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CSSReset, ThemeProvider } from "@chakra-ui/core";
 
+const customTitleBar = window.require("custom-electron-titlebar");
+
+let myTitleBar = new customTitleBar.Titlebar({
+  backgroundColor: customTitleBar.Color.fromHex("#333"),
+  menu: null,
+  titleHorizontalAlignment: "left",
+  unfocusEffect: false,
+});
+
+myTitleBar.updateTitle("Friday - Your Personal Assistant");
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>

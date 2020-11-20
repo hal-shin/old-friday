@@ -1,6 +1,7 @@
+const fs = require("fs");
 const path = require("path");
 
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, dialog } = require("electron");
 const isDev = require("electron-is-dev");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling
@@ -13,8 +14,11 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    titleBarStyle: "hidden",
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
 
@@ -58,3 +62,24 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+exports.getFileFromUser = () => {
+  const files = dialog.showOpenDialog({
+    properties: ["openFile"],
+    buttonLabel: "Unveil",
+    title: "Open Fire Sale Document",
+    filters: [
+      {
+        name: "Markdown Files",
+        extensions: ["md", "mdown", "markdown"],
+      },
+    ],
+  });
+
+  if (!files) return;
+
+  const file = files[0];
+  const content = fs.readFileSync(file).toString();
+
+  console.log(content);
+};
