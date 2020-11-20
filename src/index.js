@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CSSReset, ThemeProvider } from "@chakra-ui/core";
 import { BrowserRouter } from "react-router-dom";
-import theme from "./icons/theme/theme";
+import customTheme from "./theme/theme";
 
 const customTitleBar = window.require("custom-electron-titlebar");
 
@@ -20,7 +20,7 @@ new customTitleBar.Titlebar({
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={customTheme}>
       <CSSReset />
       <BrowserRouter>
         <App />
