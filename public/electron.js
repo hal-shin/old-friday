@@ -3,6 +3,10 @@ const path = require("path");
 
 const { app, BrowserWindow, dialog } = require("electron");
 const isDev = require("electron-is-dev");
+const {
+  default: installExtension,
+  REDUX_DEVTOOLS,
+} = require("electron-devtools-installer");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling
 if (require("electron-squirrel-startup")) {
@@ -31,6 +35,10 @@ function createWindow() {
   );
 
   win.setMenu(null);
+
+  installExtension(REDUX_DEVTOOLS).then((name) => {
+    console.log(`Added Extension: ${name}`);
+  });
 
   // Open the DevTools.
   if (isDev) {

@@ -1,8 +1,8 @@
 import React from "react";
-import {Box, Heading, Image, PseudoBox, Text} from "@chakra-ui/core";
-import {NAVBAR_PHOTO_URL} from "../data/constants";
+import { Box, Heading, Image, PseudoBox, Text } from "@chakra-ui/core";
+import { NAVBAR_PHOTO_URL } from "../data/constants";
 import Center from "./Center";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navigation = ({ to, children }) => {
   return (
@@ -27,9 +27,8 @@ const Navigation = ({ to, children }) => {
 };
 
 function Navbar() {
-
   return (
-    <Box minW="300px" px="20px">
+    <Box minW="280px" px="20px">
       <Box w="100%">
         <Heading color="white" textAlign="center" fontSize="2xl">
           Friday

@@ -6,6 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { CSSReset, ThemeProvider } from "@chakra-ui/core";
 import { BrowserRouter } from "react-router-dom";
 import customTheme from "./theme/theme";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer } from "./data/reducers/rootReducer";
 
 const customTitleBar = window.require("custom-electron-titlebar");
 
@@ -18,14 +21,18 @@ new customTitleBar.Titlebar({
 
 // myTitleBar.updateTitle("Friday - Your Personal Assistant");
 
+const store = configureStore({ reducer: rootReducer });
+
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={customTheme}>
-      <CSSReset />
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={customTheme}>
+        <CSSReset />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
