@@ -4,23 +4,27 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CSSReset, ThemeProvider } from "@chakra-ui/core";
+import { BrowserRouter } from "react-router-dom";
+import theme from "./icons/theme/theme";
 
 const customTitleBar = window.require("custom-electron-titlebar");
 
-let myTitleBar = new customTitleBar.Titlebar({
+new customTitleBar.Titlebar({
   backgroundColor: customTitleBar.Color.fromHex("#333"),
   menu: null,
   titleHorizontalAlignment: "left",
   unfocusEffect: false,
 });
 
-myTitleBar.updateTitle("Friday - Your Personal Assistant");
+// myTitleBar.updateTitle("Friday - Your Personal Assistant");
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <CSSReset />
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
