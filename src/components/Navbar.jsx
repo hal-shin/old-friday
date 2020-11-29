@@ -45,6 +45,7 @@ function Navbar() {
       </Heading>
       <Box>
         <Navigation to="/">Dashboard</Navigation>
+        <Navigation to="/automations">Automations</Navigation>
         <Navigation to="/notes">Notes</Navigation>
         <Navigation to="/weather">Weather</Navigation>
       </Box>

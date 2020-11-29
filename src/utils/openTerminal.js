@@ -1,4 +1,4 @@
-const { exec } = window.require("child_process");
+import { exec } from "child_process";
 export const openTerminal = (command, target) => {
   console.log("Opening terminal...", target);
 

@@ -1,19 +1,11 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Divider,
-  Editable,
-  EditableInput,
-  EditablePreview,
-  Grid,
-  Heading,
-  Textarea,
-} from "@chakra-ui/core";
+import { Box, Button, Divider, Grid, Heading, Textarea } from "@chakra-ui/core";
 import { openTerminal } from "../utils/openTerminal";
+import PageHeader from "../components/PageHeader";
 
-const { shell } = window.require("electron");
-const { exec } = window.require("child_process");
+import { shell } from "electron";
+import { exec } from "child_process";
+// import database from "../api/database";
 
 function Dashboard() {
   const pullBackend = () => {
@@ -39,13 +31,7 @@ function Dashboard() {
 
   return (
     <Box>
-      <Box mb={8}>
-        <Editable fontSize="6xl" fontWeight="bold" defaultValue="Welcome, Hal!">
-          <EditablePreview />
-          <EditableInput />
-        </Editable>
-        <Divider />
-      </Box>
+      <PageHeader id="dashboard" text="Welcome, Hal!" />
 
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
         <Box>

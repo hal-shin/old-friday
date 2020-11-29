@@ -6,8 +6,10 @@
   "author": "Hal Shin <hal.shin@alumni.ubc.ca>",
   "description": "An electron app for personal productivity",
   "homepage": "./",
+  "target": "electron-renderer",
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
+    "@craco/craco": "^5.8.0",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@reduxjs/toolkit": "^1.4.0",
@@ -21,21 +23,23 @@
     "emotion-theming": "^10.0.27",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^6.12.0",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "uuid": "^8.3.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "dev": "concurrently -k \"cross-env BROWSER=none npm start\" \"npm run electron\"",
     "electron": "wait-on tcp:3000 && electron-forge start",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "package": "react-scripts build && electron-forge package",
-    "make": "react-scripts build && electron-forge make"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
+    "package": "craco build && electron-forge package",
+    "make": "craco build && electron-forge make"
   },
   "eslintConfig": {
     "extends": [

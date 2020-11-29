@@ -1,7 +1,6 @@
-const fs = require("fs");
 const path = require("path");
 
-const { app, BrowserWindow, dialog } = require("electron");
+const { app, BrowserWindow } = require("electron");
 const isDev = require("electron-is-dev");
 const {
   default: installExtension,
@@ -71,23 +70,23 @@ app.on("activate", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-exports.getFileFromUser = () => {
-  const files = dialog.showOpenDialog({
-    properties: ["openFile"],
-    buttonLabel: "Unveil",
-    title: "Open Fire Sale Document",
-    filters: [
-      {
-        name: "Markdown Files",
-        extensions: ["md", "mdown", "markdown"],
-      },
-    ],
-  });
-
-  if (!files) return;
-
-  const file = files[0];
-  const content = fs.readFileSync(file).toString();
-
-  console.log(content);
-};
+// exports.getFileFromUser = () => {
+//   const files = dialog.showOpenDialog({
+//     properties: ["openFile"],
+//     buttonLabel: "Unveil",
+//     title: "Open Fire Sale Document",
+//     filters: [
+//       {
+//         name: "Markdown Files",
+//         extensions: ["md", "mdown", "markdown"],
+//       },
+//     ],
+//   });
+//
+//   if (!files) return;
+//
+//   const file = files[0];
+//   const content = fs.readFileSync(file).toString();
+//
+//   console.log(content);
+// };

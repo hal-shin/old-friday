@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import customTheme from "./theme/theme";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { rootReducer } from "./data/reducers/rootReducer";
+import { rootReducer } from "./reducers/rootReducer";
 
 const customTitleBar = window.require("custom-electron-titlebar");
 
@@ -17,6 +17,7 @@ new customTitleBar.Titlebar({
   menu: null,
   titleHorizontalAlignment: "left",
   unfocusEffect: false,
+  closeable: true,
 });
 
 // myTitleBar.updateTitle("Friday - Your Personal Assistant");
