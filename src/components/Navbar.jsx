@@ -26,9 +26,17 @@ const Navigation = ({ to, children }) => {
   );
 };
 
-function Navbar() {
+function Navbar({ isOpen }) {
   return (
-    <Box minW="280px" px="20px">
+    <Box
+      minW={isOpen ? "280px" : "0px"}
+      w={isOpen ? "280px" : "0px"}
+      // w="280px"
+      px={isOpen ? "20px" : "0px"}
+      // px="20px"
+      transition="0.35s all ease-in"
+      // transform={isOpen ? "translate(0%)" : "translate(-280px)"}
+    >
       <Box w="100%">
         <Heading color="white" textAlign="center" fontSize="2xl">
           Friday
