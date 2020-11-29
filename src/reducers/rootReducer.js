@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import userReducer from "./userReducer";
-import autoReducer from "./autoReducer";
+import dataReducer from "./dataReducer";
 
 export const rootReducer = combineReducers({
   user: userReducer,
-  auto: autoReducer,
+  data: dataReducer,
 });

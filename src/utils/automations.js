@@ -1,11 +1,17 @@
+import { shell } from "electron";
 import { exec } from "child_process";
-export const openTerminal = (command, target) => {
+
+export const openLink = (url) => {
+  shell.openExternal(url);
+};
+
+export const openTerminal = (command, target, detached = true) => {
   console.log("Opening terminal...", target);
 
   const terminal = exec(
     "start cmd /k " + command,
     {
-      detached: true,
+      detached,
       cwd: target,
     },
     (err) => {
@@ -25,5 +31,20 @@ export const openTerminal = (command, target) => {
 
   terminal.on("close", () => {
     console.log("Terminal closed.");
+  });
+};
+
+export const automate = (instructions) => {
+  instructions.forEach((instruction) => {
+    switch (instruction.type) {
+      case "link":
+        openLink(instruction.link);
+        return;
+      case "terminal":
+        openTerminal(instruction.command, instruction.target);
+        return;
+      default:
+        return;
+    }
   });
 };
